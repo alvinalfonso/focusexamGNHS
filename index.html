@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusExam - Pastel</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        // Pastel Palette (Blue & Yellow Reference)
+                        paper: '#FDFBF7',      // Very light cream background
+                        pastel: { 
+                            navy: '#34495E',   // Soft Navy (Text)
+                            blue: '#AED6F1',   // Pastel Blue (Accents)
+                            blueLight: '#EBF5FB',
+                            yellow: '#F9E79F', // Pastel Yellow (Primary)
+                            yellowDim: '#FCF3CF',
+                            red: '#F5B7B1',    // Pastel Red (Errors)
+                            green: '#ABEBC6'   // Pastel Green (Success)
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.4s ease-out forwards',
+                        'slide-up': 'slideUp 0.4s ease-out forwards',
+                        'pulse-soft': 'pulseSoft 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        pulseSoft: { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0.8' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- React & Libraries -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FDFBF7; color: #34495E; }
+        
+        .scroller::-webkit-scrollbar { width: 8px; }
+        .scroller::-webkit-scrollbar-track { background: #EBF5FB; }
+        .scroller::-webkit-scrollbar-thumb { background: #AED6F1; border-radius: 4px; }
+        .scroller::-webkit-scrollbar-thumb:hover { background: #F9E79F; }
+        
+        input, textarea, select {
+            background-color: #ffffff;
+            border: 2px solid #EBF5FB;
+            color: #34495E;
+            transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #F9E79F;
+            box-shadow: 0 0 0 3px rgba(249, 231, 159, 0.3);
+        }
+
+        /* Prevent Selection for Anti-Cheat */
+        .no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        input[type="checkbox"], input[type="radio"] {
+            accent-color: #F9E79F;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.6.0/"
+  }
+}
+</script>
+</head>
+<body class="bg-paper text-pastel-navy selection:bg-pastel-yellow selection:text-pastel-navy min-h-screen">
+    <div id="root"></div>
+    <script type="text/babel" src="./index.tsx"></script>
+</body>
+</html>
